@@ -8,7 +8,7 @@
 
 Nearby é um aplicativo mobile de clube de benefícios que oferece cupons exclusivos para usuários em estabelecimentos próximos. O objetivo do app é permitir que os usuários descubram lojas parceiras e acessem promoções ao escanear QR codes nos locais, aproveitando descontos e vantagens especiais.
 
-![Demonstração do app](https://github.com/lizandramalta/nearby/mobile/assets/images/demonstration.gif?raw=true)
+![Demonstração do app](https://github.com/lizandramalta/nearby/mobile/assets/images/demonstration.gif)
 
 ## Tecnologias utilizadas
 
