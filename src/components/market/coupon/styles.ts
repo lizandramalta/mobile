@@ -2,15 +2,6 @@ import { StyleSheet } from 'react-native'
 import { colors, fontFamily } from '@/styles/theme'
 
 export const s = StyleSheet.create({
-  container: {
-    paddingHorizontal: 32
-  },
-  title: {
-    color: colors.gray[500],
-    fontSize: 14,
-    fontFamily: fontFamily.medium,
-    marginBottom: 12
-  },
   content: {
     flexDirection: 'row',
     backgroundColor: colors.green.soft,
@@ -20,10 +11,12 @@ export const s = StyleSheet.create({
     alignItems: 'center',
     gap: 10
   },
-  code: {
+  contentAvailableCoupons: {
+    backgroundColor: colors.red.light
+  },
+  text: {
     color: colors.gray[600],
     fontSize: 16,
-    fontFamily: fontFamily.semiBold,
-    textTransform: 'uppercase'
+    fontFamily: fontFamily.semiBold
   }
 })

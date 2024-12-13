@@ -13,5 +13,6 @@ export declare global {
       id: string
       description: string
     }[]
+    categoryId: string
   }
 }

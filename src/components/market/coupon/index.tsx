@@ -1,21 +1,46 @@
-import { colors } from '@/styles/colors'
-import { IconProps, IconTicket } from '@tabler/icons-react-native'
+import { IconProps as TablerIconProps } from '@tabler/icons-react-native'
 import { ComponentType } from 'react'
-import { Text, View } from 'react-native'
+import {
+  TextProps,
+  Text as TextReactNative,
+  View,
+  ViewProps
+} from 'react-native'
 import { s } from './styles'
 
-type Props = {
-  code: string
+type Props = ViewProps & {
+  type: 'availableCoupons' | 'couponCode'
 }
 
-export function Coupon({ code }: Props) {
+function Text({ children, style }: TextProps) {
+  return <TextReactNative style={[s.text, style]}>{children}</TextReactNative>
+}
+
+type IconProps = {
+  icon: ComponentType<TablerIconProps>
+  color: string
+}
+
+function Icon({ icon: Icon, color }: IconProps) {
+  return <Icon size={24} color={color} />
+}
+
+function Coupon({ children, type, style }: Props) {
   return (
-    <View style={s.container}>
-      <Text style={s.title}>Utilize esse cupom</Text>
-      <View style={s.content}>
-        <IconTicket size={24} color={colors.green.light} />
-        <Text style={s.code}>{code}</Text>
+    <View style={style}>
+      <View
+        style={[
+          s.content,
+          type === 'availableCoupons' && s.contentAvailableCoupons
+        ]}
+      >
+        {children}
       </View>
     </View>
   )
 }
+
+Coupon.Icon = Icon
+Coupon.Text = Text
+
+export { Coupon }

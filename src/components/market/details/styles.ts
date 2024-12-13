@@ -9,6 +9,10 @@ export const s = StyleSheet.create({
     borderTopEndRadius: 20,
     backgroundColor: colors.gray[100]
   },
+  header: {
+    flexDirection: 'row',
+    gap: 8
+  },
   name: {
     fontSize: 20,
     fontFamily: fontFamily.bold,
@@ -18,9 +22,11 @@ export const s = StyleSheet.create({
     fontSize: 16,
     fontFamily: fontFamily.regular,
     color: colors.gray[500],
-    marginTop: 12,
-    marginBottom: 32,
+    marginVertical: 12,
     lineHeight: 22
+  },
+  availableCoupons: {
+    marginBottom: 32
   },
   group: {
     width: '100%',

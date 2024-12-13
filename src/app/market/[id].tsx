@@ -4,6 +4,8 @@ import { Coupon } from '@/components/market/coupon'
 import { Cover } from '@/components/market/cover'
 import { Details } from '@/components/market/details'
 import { api } from '@/services/api'
+import { colors } from '@/styles/colors'
+import { IconMapPin, IconScan, IconTicket } from '@tabler/icons-react-native'
 import { CameraView, useCameraPermissions } from 'expo-camera'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useEffect, useRef, useState } from 'react'
@@ -53,14 +55,13 @@ export default function Market() {
   async function getCoupon(id: string) {
     try {
       setCouponIsFetching(true)
-
       const { data } = await api.patch('/coupons/' + id)
 
       Alert.alert('Cupom', data.coupon)
       setCoupon(data.coupon)
     } catch (error) {
       console.log(error)
-      Alert.alert('Erro', 'Não foi utilizar o cupom.')
+      Alert.alert('Erro', 'Não foi possível utilizar o cupom.')
     } finally {
       setCouponIsFetching(false)
     }
@@ -99,17 +100,30 @@ export default function Market() {
       <ScrollView showsHorizontalScrollIndicator={false}>
         <Cover uri={data?.cover} />
         <Details data={data} />
-        {coupon && <Coupon code={coupon} />}
+        {coupon && (
+          <Coupon type="couponCode" style={{ paddingHorizontal: 32 }}>
+            <Coupon.Icon icon={IconTicket} color={colors.green.base} />
+            <Coupon.Text style={{ textTransform: 'uppercase' }}>
+              {coupon}
+            </Coupon.Text>
+          </Coupon>
+        )}
       </ScrollView>
 
       <View style={{ padding: 32 }}>
-        <Button onPress={handleOpenCamera}>
-          <Button.Title>Ler QR Code</Button.Title>
-        </Button>
+        <View style={{ flexDirection: 'row', gap: 12 }}>
+          <Button style={{ width: 58 }}>
+            <Button.Icon icon={IconMapPin} />
+          </Button>
+          <Button onPress={handleOpenCamera} style={{ flex: 1 }}>
+            <Button.Icon icon={IconScan} />
+            <Button.Title>Ler QR Code</Button.Title>
+          </Button>
+        </View>
       </View>
       <Modal style={{ flex: 1 }} visible={isVisibleCameraModal}>
         <CameraView
-          style={{ position: 'absolute', bottom: 32, left: 32, right: 32 }}
+          style={{ flex: 1 }}
           facing="back"
           onBarcodeScanned={({ data }) => {
             if (data && !qrLock.current) {
@@ -118,7 +132,7 @@ export default function Market() {
             }
           }}
         />
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={{ position: 'absolute', bottom: 32, left: 32, right: 32 }}>
           <Button
             onPress={() => setIsVisibleCameraModal(false)}
             isLoading={couponIsFetching}
