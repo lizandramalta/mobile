@@ -1,17 +1,10 @@
-import { Button } from '@/components/button'
-import {
-  IconArrowLeft,
-  IconMapPin,
-  IconPhone,
-  IconTicket
-} from '@tabler/icons-react-native'
-import { router } from 'expo-router'
-import { ImageBackground, Text, View } from 'react-native'
-import { s } from './styles'
-import { Info } from '../info'
-import { Coupon } from '../coupon'
 import { colors, fontFamily } from '@/styles/theme'
 import { categoriesIcons } from '@/utils/categories-icons'
+import { IconMapPin, IconPhone, IconTicket } from '@tabler/icons-react-native'
+import { Text, View } from 'react-native'
+import { Coupon } from '../coupon'
+import { Info } from '../info'
+import { s } from './styles'
 
 type Props = {
   data: Place

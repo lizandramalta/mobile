@@ -112,7 +112,10 @@ export default function Market() {
 
       <View style={{ padding: 32 }}>
         <View style={{ flexDirection: 'row', gap: 12 }}>
-          <Button style={{ width: 58 }}>
+          <Button
+            style={{ width: 58 }}
+            onPress={() => router.navigate(`/location/${data.id}`)}
+          >
             <Button.Icon icon={IconMapPin} />
           </Button>
           <Button onPress={handleOpenCamera} style={{ flex: 1 }}>
